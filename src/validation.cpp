@@ -2044,7 +2044,7 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
     // the peer who sent us this block is missing some data and wasn't able
     // to recognize that block is actually invalid.
     // TODO: resync data (both ways?) and try to reprocess this block later.
-    CAmount expectedReward = GetBlockSubsidy(pindex->pprev->nHeight, chainparams.GetConsensus()) + platformEmissionsAmt;
+    CAmount expectedReward = GetBlockSubsidy(pindex->pprev->nHeight, chainparams.GetConsensus());
 
     std::string strError = "";
     if (!IsBlockValueValid(block, pindex->nHeight, expectedReward, pindex->nMint, strError)) {
