@@ -2040,7 +2040,8 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
     CAmount expectedReward = GetBlockSubsidy(pindex->pprev->nHeight, chainparams.GetConsensus());
 
     std::string strError = "";
-    if (!IsBlockValueValid(block, pindex->nHeight, expectedReward, pindex->nMint, strError)) {
+    if (!IsBlockValueValid(block, pindex->nHeight, pindex->nMint, expectedReward, strError)) {
+    //if (!IsBlockValueValid(block, pindex->nHeight, expectedReward, pindex->nMint, strError)) {
         return state.DoS(0, error("ConnectBlock(DONU): %s", strError), REJECT_INVALID, "bad-cb-amount");
     }
 
